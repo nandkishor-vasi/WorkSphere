@@ -28,7 +28,8 @@ const ActivityList = () => {
   const userData = JSON.parse(localStorage.getItem("user")) || {};
   const memberId = userData?.id;
   const token = userData?.token;
-  const backendBaseUrl = "http://localhost:8080";
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
+
 
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);

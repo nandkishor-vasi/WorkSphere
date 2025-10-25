@@ -6,7 +6,7 @@ import { TextField, Select, MenuItem, Button, InputLabel, FormControl, FormHelpe
 const ActivityForm = ({ adminId, refresh }) => {
   const userData = useAuth();
   const token = userData?.user?.token;
-  const backendBaseUrl = "http://localhost:8080";
+const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 
   const [formData, setFormData] = useState({
     action: '',

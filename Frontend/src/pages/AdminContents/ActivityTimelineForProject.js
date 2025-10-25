@@ -19,8 +19,8 @@ import { useAuth } from '../../context/AuthContext';
 
 const ProjectTimeline = ({ projectId }) => {
   const [timeline, setTimeline] = useState(null);
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
   const [loading, setLoading] = useState(true);
-  const backendBaseUrl = "http://localhost:8080";
   const UserData = useAuth();
   const token = UserData?.user?.token;
 

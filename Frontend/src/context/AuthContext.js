@@ -10,8 +10,8 @@ export const AuthProvider = ({ children }) => {
 
   const getTokenExpiration = (token) => {
     try {
-      const payload = JSON.parse(atob(token.split(".")[1])); // Decode JWT
-      return payload.exp ? payload.exp * 1000 : null; // Convert to milliseconds
+      const payload = JSON.parse(atob(token.split(".")[1])); 
+      return payload.exp ? payload.exp * 1000 : null; 
     } catch (error) {
       console.error("Invalid token:", error);
       return null;

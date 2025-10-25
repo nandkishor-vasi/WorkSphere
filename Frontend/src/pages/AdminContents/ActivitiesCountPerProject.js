@@ -6,7 +6,7 @@ import { useAuth } from '../../context/AuthContext';
 const ActivitiesCountPerProject = ({ projects }) => {
   const [activitiesCount, setActivitiesCount] = useState({});
   const [loading, setLoading] = useState(true);
-  const backendBaseUrl = "http://localhost:8080";
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
   const userData = useAuth();
   const token = userData?.user?.token;
   const adminId = userData?.user?.id;

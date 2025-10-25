@@ -6,9 +6,11 @@ import { Card, CardContent, Typography, Button, Box, Chip } from '@mui/material'
 const ActivityCard = ({ activity, refresh }) => {
   const userData = useAuth();
   const token = userData?.user?.token;
+  
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 
   const handleDelete = async () => {
-    await axios.delete(`http://localhost:8080/api/activities/${activity.id}`, {
+    await axios.delete(`${backendBaseUrl}/api/activities/${activity.id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

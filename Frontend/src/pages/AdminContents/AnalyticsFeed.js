@@ -11,7 +11,7 @@ const AnalyticsFeed = () => {
   const userData = useAuth();
   const token = userData?.user?.token;
   const adminId = userData?.user?.id;
-  const backendBaseUrl = "http://localhost:8080";
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
   
   useEffect(() => {
     axios.get(`${backendBaseUrl}/api/projects/projectByAdmin/${adminId}`, {

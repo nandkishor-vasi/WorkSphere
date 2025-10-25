@@ -24,8 +24,8 @@ const AdminDashboard = () => {
   const { adminId } = useParams();
   const userData = JSON.parse(localStorage.getItem("user")) || {};
   const token = userData?.token;
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 
-  const backendBaseUrl = "http://localhost:8080";
 
   const [admin, setAdmin] = useState(null);
   const [metrics, setMetrics] = useState([]);

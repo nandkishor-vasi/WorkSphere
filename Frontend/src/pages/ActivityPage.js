@@ -10,7 +10,8 @@ const ActivityPage = () => {
   const userData = useAuth();
   const adminId = userData?.user?.id;
   const token = userData?.user?.token;
-  const backendBaseUrl = "http://localhost:8080";
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
+  
 
   const fetchActivities = async () => {
     if (!adminId) return;

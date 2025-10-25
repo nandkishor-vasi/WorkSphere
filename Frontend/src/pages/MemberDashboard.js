@@ -26,7 +26,7 @@ const TeamMemberDashboard = () => {
   const userData = JSON.parse(localStorage.getItem("user")) || {};
   const userId = userData?.id;
   const token = userData?.token;
-  const backendBaseUrl = "http://localhost:8080";
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 
   const [projects, setProjects] = useState([]);
   const [activities, setActivities] = useState([]);

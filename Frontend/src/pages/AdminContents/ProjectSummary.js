@@ -41,7 +41,7 @@ const ProjectSummary = () => {
   const userData = useAuth();
   const token = userData?.user?.token;
   const userId = userData?.user?.id;
-  const backendBaseUrl = 'http://localhost:8080';
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 
   useEffect(() => {
     axios
