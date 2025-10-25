@@ -1,0 +1,443 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+.parallax {
+  background:
+    linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
+    url("https://img.freepik.com/premium-vector/project-management_104589-39.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 85vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.parallax .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4),
+    rgba(44, 62, 80, 0.6)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+  backdrop-filter: blur(2px);
+}
+
+.parallax-title {
+  font-size: 4.2rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, #ffffff, #e3f2fd);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.parallax-text {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  max-width: 800px;
+  line-height: 1.7;
+  color: #f8f9fa;
+  font-weight: 300;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.donate-btn {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.donate-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.donate-btn:hover::before {
+  left: 100%;
+}
+
+.donate-btn:hover {
+  background: linear-gradient(45deg, #ee5a52, #ff6b6b);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+}
+
+@media (max-width: 768px) {
+  .parallax {
+    background-attachment: scroll;
+    height: 70vh;
+  }
+
+  .parallax-title {
+    font-size: 2.8rem;
+    line-height: 1.2;
+  }
+
+  .parallax-text {
+    font-size: 1.3rem;
+    padding: 0 10px;
+  }
+
+  .donate-btn {
+    font-size: 1.1rem;
+    padding: 14px 28px;
+  }
+
+  .section {
+    margin: 1rem;
+    padding: 60px 15px;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .content {
+    font-size: 1.2rem;
+    padding: 0 10px;
+  }
+
+  .steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+}
+
+.parallax-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.parallax-text {
+  font-size: 1.4rem;
+  margin-top: 10px;
+  max-width: 600px;
+}
+
+.section {
+  padding: 100px 20px;
+  text-align: center;
+  justify-content: center;
+  display: grid;
+  background: rgba(255, 255, 255, 0.95);
+  margin: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.content {
+  font-size: 1.4rem;
+  margin: 0 auto;
+  max-width: 900px;
+  line-height: 1.8;
+  color: #555;
+  font-weight: 400;
+}
+
+/* How It Works */
+.how-it-works {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(240, 248, 255, 0.9)
+  );
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.step {
+  background: linear-gradient(135deg, #ffffff, #f8f9ff);
+  padding: 35px 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.step:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
+}
+
+.step h4 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.step p {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Impact Stats */
+.impact {
+  background: white;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.stat {
+  background: #0056b3;
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 280px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.stat:hover {
+  transform: scale(1.05);
+}
+
+/* CTA Section */
+.cta {
+  background: #0056b3;
+  color: white;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.cta .title {
+  color: white;
+}
+
+.donate-btn {
+  background: white;
+  color: #0056b3;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 20px;
+  border: none;
+}
+
+.donate-btn:hover {
+  background: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .parallax-title {
+    font-size: 2.2rem;
+  }
+
+  .parallax-text {
+    font-size: 1.1rem;
+  }
+
+  .section {
+    margin: 0.5rem;
+    padding: 40px 10px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .step {
+    padding: 25px 20px;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Modern Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Apply animations */
+.section {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.step {
+  animation: slideIn 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.step:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.step:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.step:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.donate-btn {
+  animation: pulse 2s infinite;
+}
+
+.footer {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: #ffffff;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 60px;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+}
+.contact-info h3 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ecf0f1;
+}
+.contact-info p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #bdc3c7;
+}
+
+.contact {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition:
+    opacity 0.5s ease-in-out,
+    transform 0.5s ease-in-out;
+}
+
+.contact.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
