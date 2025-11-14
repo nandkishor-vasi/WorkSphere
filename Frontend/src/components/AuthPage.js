@@ -64,8 +64,10 @@ const Footer = styled("div")({
   marginLeft: "-58px",
 });
 
+
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -76,12 +78,47 @@ const AuthPage = () => {
     role: "",
   });
 
+  const validate = () => {
+  let tempErrors = {};
+
+  if (!isLogin) {
+    if (!formData.name || formData.name.length < 3)
+      tempErrors.name = "Name must be at least 3 characters.";
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email))
+      tempErrors.email = "Enter a valid email.";
+
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(formData.phoneNumber))
+      tempErrors.phoneNumber = "Phone number must be 10 digits.";
+
+    if (!formData.address || formData.address.length < 5)
+      tempErrors.address = "Address must be at least 5 characters.";
+
+    if (!formData.role)
+      tempErrors.role = "Please select a role.";
+  }
+
+  if (!formData.username || formData.username.length < 4)
+    tempErrors.username = "Username must be at least 4 characters.";
+
+  if (!formData.password || formData.password.length < 6)
+    tempErrors.password = "Password must be at least 6 characters.";
+
+  setErrors(tempErrors);
+
+  return Object.keys(tempErrors).length === 0;
+};
+
+
   const navigate = useNavigate();
   const { login } = useAuth();
   const backendBaseUrl = "http://localhost:8080";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validate()) return;
     const url = isLogin
       ? `${backendBaseUrl}/api/auth/login`
       : `${backendBaseUrl}/api/auth/signup`;
@@ -154,6 +191,8 @@ const AuthPage = () => {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     required
+                    error={Boolean(errors.name)}
+                    helperText={errors.name}
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         "&.Mui-focused fieldset": { borderColor:"rgb(166, 166, 166)" },
@@ -174,6 +213,8 @@ const AuthPage = () => {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     required
+                    error={Boolean(errors.email)}
+                    helperText={errors.email}
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         "&.Mui-focused fieldset": { borderColor:"rgb(166, 166, 166)" },
@@ -194,6 +235,8 @@ const AuthPage = () => {
                       setFormData({ ...formData, phoneNumber: e.target.value })
                     }
                     required
+                    error={Boolean(errors.phoneNumber)}
+                    helperText={errors.phoneNumber}
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         "&.Mui-focused fieldset": { borderColor:"rgb(166, 166, 166)" },
@@ -213,6 +256,8 @@ const AuthPage = () => {
                       setFormData({ ...formData, address: e.target.value })
                     }
                     required
+                    error={Boolean(errors.address)} 
+                    helperText={errors.address}
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         "&.Mui-focused fieldset": { borderColor:"rgb(166, 166, 166)" },
@@ -230,10 +275,16 @@ const AuthPage = () => {
                     }
                     margin="normal"
                     variant="outlined"
+                    error={Boolean(errors.role)}
                   >
                     <MenuItem value="ADMIN">ADMIN</MenuItem>
                     <MenuItem value="MEMBER">MEMBER</MenuItem>
                   </Select>
+                  {errors.role && (
+                    <Typography variant="caption" color="error">
+                      {errors.role}
+                    </Typography>
+                  )}
                 </>
               )}
 
@@ -247,6 +298,8 @@ const AuthPage = () => {
                   setFormData({ ...formData, username: e.target.value })
                 }
                 required
+                error={Boolean(errors.username)}
+                helperText={errors.username}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": { borderColor:"rgb(166, 166, 166)" },
@@ -267,6 +320,8 @@ const AuthPage = () => {
                   setFormData({ ...formData, password: e.target.value })
                 }
                 required
+                error={Boolean(errors.password)}
+                helperText={errors.password}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": { borderColor:"rgb(166, 166, 166)" },
