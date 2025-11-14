@@ -82,8 +82,11 @@ const AuthPage = () => {
   let tempErrors = {};
 
   if (!isLogin) {
-    if (!formData.name || formData.name.length < 3)
+    if (!formData.name || formData.name.length < 3) {
       tempErrors.name = "Name must be at least 3 characters.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
+      tempErrors.name = "Name must contain only letters (A–Z) and spaces.";
+    }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email))
@@ -187,9 +190,13 @@ const AuthPage = () => {
                     margin="normal"
                     variant="outlined"
                     value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (/^[A-Za-z\s]*$/.test(value)) {
+                        setFormData({ ...formData, name: value });
+                      }
+                    }}
+
                     required
                     error={Boolean(errors.name)}
                     helperText={errors.name}
