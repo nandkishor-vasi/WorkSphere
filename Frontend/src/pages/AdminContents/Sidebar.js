@@ -53,6 +53,7 @@ const Sidebar = ({ adminId }) => {
           background: "linear-gradient(180deg, #2c3e50 0%, #34495e 100%)",
           color: "white",
           borderRight: "none",
+          top:"68px",
         },
       }}
     >
