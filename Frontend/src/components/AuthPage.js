@@ -103,12 +103,6 @@ const AuthPage = () => {
       tempErrors.role = "Please select a role.";
   }
 
-  if (!formData.username || formData.username.length < 4)
-    tempErrors.username = "Username must be at least 4 characters.";
-
-  if (!formData.password || formData.password.length < 6)
-    tempErrors.password = "Password must be at least 6 characters.";
-
   setErrors(tempErrors);
 
   return Object.keys(tempErrors).length === 0;
@@ -305,8 +299,6 @@ const AuthPage = () => {
                   setFormData({ ...formData, username: e.target.value })
                 }
                 required
-                error={Boolean(errors.username)}
-                helperText={errors.username}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": { borderColor:"rgb(166, 166, 166)" },
@@ -327,8 +319,6 @@ const AuthPage = () => {
                   setFormData({ ...formData, password: e.target.value })
                 }
                 required
-                error={Boolean(errors.password)}
-                helperText={errors.password}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": { borderColor:"rgb(166, 166, 166)" },
